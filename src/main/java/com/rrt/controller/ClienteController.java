@@ -33,13 +33,12 @@ public class ClienteController extends HttpServlet {
 
         if(acao.equalsIgnoreCase("criar")){
             avancar = MANTER_CLIENTE;
-        } else if(acao.equalsIgnoreCase("listarTODOS")){
-            List<Cliente> listaClientes = null;
-            try {
-                listaClientes = clienteDAO.findAll();
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
+        } else if(acao.equalsIgnoreCase("listarTodos")){
+            List<Cliente> listaClientes = clienteDAO.findAll();
+            request.setAttribute("listaClientes", listaClientes);
+            avancar = LISTAR_CLIENTES;
+        } else {
+            List<Cliente> listaClientes = clienteDAO.findAll();
             request.setAttribute("listaClientes", listaClientes);
             avancar = LISTAR_CLIENTES;
         }

@@ -4,4 +4,12 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+    <servlet-name>ClienteController</servlet-name>
+    <servlet-class>com.rrt.controller.ClienteController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ClienteController</servlet-name>
+    <url-pattern>/ClienteController</url-pattern>
+  </servlet-mapping>
 </web-app>

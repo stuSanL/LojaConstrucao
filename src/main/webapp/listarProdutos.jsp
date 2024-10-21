@@ -8,8 +8,6 @@
     <title>Document</title>
 </head>
 <body>
-<h1>Loja de Construção</h1>
-<a href>Listar Clientes</a>
 
 </body>
 </html>

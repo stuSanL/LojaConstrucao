@@ -37,7 +37,7 @@ public class ClienteDAO {
         }
     }
 
-    public List<Cliente> findAll() throws SQLException {
+    public List<Cliente> findAll(){
         String sql = "SELECT * FROM Cliente";
         List<Cliente> clientes = new ArrayList<>();
         try(PreparedStatement stmt = connection.prepareStatement(sql)){
