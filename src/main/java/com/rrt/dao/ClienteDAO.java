@@ -2,15 +2,18 @@ package com.rrt.dao;
 
 import com.rrt.Connection.ConnectionFactory;
 import com.rrt.models.Cliente;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import jakarta.servlet.annotation.WebServlet;
+/*import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;*/
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ClienteDAO {
-    private static final Logger logger = LoggerFactory.getLogger(ClienteDAO.class);
+    //private static final Logger logger = LoggerFactory.getLogger(ClienteDAO.class);
     Connection connection;
 
     public ClienteDAO() {
@@ -33,7 +36,7 @@ public class ClienteDAO {
             stmt.setString(11, cliente.getSenha());
             stmt.execute();
         } catch (SQLException e){
-            logger.error(e.getMessage());
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 
@@ -60,7 +63,8 @@ public class ClienteDAO {
                 clientes.add(cliente);
             }
         } catch (SQLException e){
-            logger.error(e.getMessage());
+            //logger.error(e.getMessage());
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, e);
         }
         return clientes;
     }

@@ -9,9 +9,9 @@ import java.sql.SQLException;
 public class TesteCliente {
     public static void main(String[] args) throws SQLException {
         Cliente cliente = new Cliente();
-        cliente.setNome("Thiago");
-        cliente.setData_nascimento(Date.valueOf("2007-10-07"));
-        cliente.setEmail("thiago@gmail.com");
+        cliente.setNome("Rafael");
+        cliente.setData_nascimento(Date.valueOf("2008-10-05"));
+        cliente.setEmail("rafael@gmail.com");
         cliente.setTelefone("tel0");
         cliente.setCep("cep0");
         cliente.setRua("rua0");
@@ -21,6 +21,10 @@ public class TesteCliente {
         cliente.setCpf("cpf0");
         cliente.setSenha("senha0");
         ClienteDAO clienteDAO = new ClienteDAO();
-        clienteDAO.add(cliente);
+        //clienteDAO.add(cliente);
+        System.out.println("Clientes: ");
+        for(Cliente c : clienteDAO.findAll()){
+            System.out.println(c.getNome());
+        }
     }
 }
