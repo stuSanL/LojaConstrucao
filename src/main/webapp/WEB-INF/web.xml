@@ -12,4 +12,13 @@
     <servlet-name>ClienteController</servlet-name>
     <url-pattern>cliente</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>LoginController</servlet-name>
+    
+    <servlet-class>com.rrt.controller.LoginController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginController</servlet-name>
+    <url-pattern>login</url-pattern>
+  </servlet-mapping>
 </web-app>

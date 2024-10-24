@@ -39,6 +39,25 @@ public class ClienteDAO {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, e);
         }
     }
+    public Cliente findbyCPF(String cpf) {
+        String sql = "SELECT FROM Pessoa WHERE cpf = ?";
+        Cliente cliente = new Cliente();
+
+        try(PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1,cpf);
+
+
+            ResultSet rs = statement.executeQuery();
+            rs.next();
+            cliente = new Cliente();
+            cliente.setSenha(rs.getString("senha"));
+
+
+        }catch (SQLException e) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE,null,e);
+        }
+        return cliente;
+    }
 
     public List<Cliente> findAll(){
         String sql = "SELECT * FROM Cliente";
