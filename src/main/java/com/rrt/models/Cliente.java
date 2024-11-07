@@ -32,9 +32,9 @@ public class Cliente {
         this.senha = senha;
     }
 
-    public Cliente(String nome, String cpf, String email, String telefone,
+    public Cliente(int id, String nome, Date data_nascimento, String cpf, String email, String telefone,
                    String cep, String rua, String numero, String complemento,
-                   String bairro, Date data_nascimento, String senha) {
+                   String bairro, String senha) {
         this.nome = nome;
         this.cpf = cpf;
         this.email = email;

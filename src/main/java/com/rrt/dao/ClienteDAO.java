@@ -2,7 +2,6 @@ package com.rrt.dao;
 
 import com.rrt.Connection.ConnectionFactory;
 import com.rrt.models.Cliente;
-import jakarta.servlet.annotation.WebServlet;
 /*import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;*/
 
@@ -13,7 +12,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ClienteDAO {
-    //private static final Logger logger = LoggerFactory.getLogger(ClienteDAO.class);
     Connection connection;
     Logger logger;
 
@@ -49,20 +47,20 @@ public class ClienteDAO {
             statement.setString(1,cpf);
             ResultSet rs = statement.executeQuery();
             rs.next();
-            cliente = new Cliente();
-            cliente.setId(rs.getInt("id"));
-            cliente.setNome(rs.getString("nome"));
-            cliente.setData_nascimento(rs.getDate("data_nascimento"));
-            cliente.setEmail(rs.getString("email"));
-            cliente.setTelefone(rs.getString("telefone"));
-            cliente.setCep(rs.getString("cep"));
-            cliente.setRua(rs.getString("rua"));
-            cliente.setNumero(rs.getString("numero"));
-            cliente.setComplemento(rs.getString("complemento"));
-            cliente.setBairro(rs.getString("bairro"));
-            cliente.setCpf(rs.getString("cpf"));
-            cliente.setSenha(rs.getString("senha"));
-
+            cliente = new Cliente(
+                    rs.getInt("id"),
+                    rs.getString("nome"),
+                    rs.getDate("data_nascimento"),
+                    rs.getString("email"),
+                    rs.getString("telefone"),
+                    rs.getString("cep"),
+                    rs.getString("rua"),
+                    rs.getString("numero"),
+                    rs.getString("complemento"),
+                    rs.getString("bairro"),
+                    rs.getString("cpf"),
+                    rs.getString("senha")
+            );
         }catch (SQLException e) {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE,null,e);
         }
@@ -73,21 +71,22 @@ public class ClienteDAO {
         String sql = "SELECT * FROM cliente WHERE id = ?";
         Cliente cliente = new Cliente();
         try(PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             rs.next();
-            cliente.setId(rs.getInt("id"));
-            cliente.setNome(rs.getString("nome"));
-            cliente.setData_nascimento(rs.getDate("data_nascimento"));
-            cliente.setEmail(rs.getString("email"));
-            cliente.setTelefone(rs.getString("telefone"));
-            cliente.setCep(rs.getString("cep"));
-            cliente.setRua(rs.getString("rua"));
-            cliente.setNumero(rs.getString("numero"));
-            cliente.setComplemento(rs.getString("complemento"));
-            cliente.setBairro(rs.getString("bairro"));
-            cliente.setCpf(rs.getString("cpf"));
-            cliente.setSenha(rs.getString("senha"));
+            cliente = new Cliente(
+                    rs.getInt("id"),
+                    rs.getString("nome"),
+                    rs.getDate("data_nascimento"),
+                    rs.getString("email"),
+                    rs.getString("telefone"),
+                    rs.getString("cep"),
+                    rs.getString("rua"),
+                    rs.getString("numero"),
+                    rs.getString("complemento"),
+                    rs.getString("bairro"),
+                    rs.getString("cpf"),
+                    rs.getString("senha")
+            );
         } catch (SQLException e){
             logger.log(Level.SEVERE,null,e);
         }
@@ -121,6 +120,27 @@ public class ClienteDAO {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, e);
         }
         return clientes;
+    }
+
+    public void deleteById(int id){
+        String sql = "DELETE FROM cliente WHERE id = ?";
+        try(PreparedStatement stmt = connection.prepareStatement(sql)){
+            stmt.setInt(1, id);
+            stmt.execute();
+        } catch (SQLException e){
+            logger.log(Level.SEVERE,null,e);
+        }
+    }
+
+    public void alterar(Cliente cliente){
+        String sql = "UPDATE cliente SET nome = ?, data_nascimento = ?, email = ?," +
+                "telefone = ?, cep = ?, rua = ?, numero = ?, complemento = ?," +
+                "bairro = ?, cpf = ?, senha = ?";
+        try(PreparedStatement stmt = connection.prepareStatement(sql)){
+
+        } catch (SQLException e){
+            logger.log(Level.SEVERE, null, e);
+        }
     }
 
 }
