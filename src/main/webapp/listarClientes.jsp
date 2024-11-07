@@ -1,4 +1,5 @@
-
+<%@ page import="com.rrt.models.Cliente" %>
+<%@ page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -28,23 +29,23 @@ pageEncoding="UTF-8"%>
                 <td>Telefone</td>
                 <td>CEP</td>
                 <td>Endereço</td>
+                <td colspan="8">Ações</td>
             </tr>
             </thead>
             <tbody>
-            <td>Teste: ${teste} <%= request.getParameter("teste")%> </td>
-            <c:forEach items="${listaClientes}" var="cliente">
-                <tr>
-                    <td><c:out value="${cliente.id}"/></td>
-                    <td><c:out value="${cliente.nome}"/></td>
-                    <td><c:out value="${cliente.cpf}"/></td>
-                    <td><c:out value="${cliente.dataNascimento}"/></td>
-                    <td><c:out value="${cliente.email}"/></td>
-                    <td><c:out value="${cliente.telefone}"/></td>
-                    <td><c:out value="${cliente.cep}"/></td>
-                    <td><c:out value="${cliente.rua}"/> <c:out value="${cliente.numero}"/>
-                        <c:out value="${cliente.complemento}"/> <c:out value="${cliente.bairro}"/> </td>
-                </tr>
-            </c:forEach>
+            <% List<Cliente> listaClientes = (List<Cliente>) request.getAttribute("listaClientes");%>
+            <% for(Cliente cliente : listaClientes){ %>
+            <tr>
+                <td><%=cliente.getId()%></td>
+                <td><%=cliente.getNome()%></td>
+                <td><%=cliente.getCpf()%></td>
+                <td><%=cliente.getData_nascimento()%></td>
+                <td><%=cliente.getEmail()%></td>
+                <td><%=cliente.getTelefone()%></td>
+                <td><%=cliente.getCep()%></td>
+                <td><%=cliente.getRua()%> <%=cliente.getNumero()%> <%=cliente.getComplemento()%> <%=cliente.getBairro()%> </td>
+            </tr>
+            <%}%>
             </tbody>
             <tfoot>
                 <td colspan="8"><a href="">Incluir novo cliente</a></td>

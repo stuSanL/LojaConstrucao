@@ -15,9 +15,11 @@ import java.util.logging.Logger;
 public class ClienteDAO {
     //private static final Logger logger = LoggerFactory.getLogger(ClienteDAO.class);
     Connection connection;
+    Logger logger;
 
     public ClienteDAO() {
-        this.connection = new ConnectionFactory().getConnection();
+        this.connection = ConnectionFactory.getConnection();
+        this.logger = Logger.getLogger(ClienteDAO.class.getName());
     }
 
     public void add(Cliente cliente) throws SQLException {
@@ -34,27 +36,60 @@ public class ClienteDAO {
             stmt.setString(9, cliente.getBairro());
             stmt.setString(10, cliente.getCpf());
             stmt.setString(11, cliente.getSenha());
-            stmt.execute();
+            stmt.executeUpdate();
         } catch (SQLException e){
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, e);
         }
     }
-    public Cliente findbyCPF(String cpf) {
-        String sql = "SELECT FROM Pessoa WHERE cpf = ?";
-        Cliente cliente = new Cliente();
 
+    public Cliente findbyCPF(String cpf) {
+        String sql = "SELECT * FROM cliente WHERE cpf = ?";
+        Cliente cliente = new Cliente();
         try(PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1,cpf);
-
-
             ResultSet rs = statement.executeQuery();
             rs.next();
             cliente = new Cliente();
+            cliente.setId(rs.getInt("id"));
+            cliente.setNome(rs.getString("nome"));
+            cliente.setData_nascimento(rs.getDate("data_nascimento"));
+            cliente.setEmail(rs.getString("email"));
+            cliente.setTelefone(rs.getString("telefone"));
+            cliente.setCep(rs.getString("cep"));
+            cliente.setRua(rs.getString("rua"));
+            cliente.setNumero(rs.getString("numero"));
+            cliente.setComplemento(rs.getString("complemento"));
+            cliente.setBairro(rs.getString("bairro"));
+            cliente.setCpf(rs.getString("cpf"));
             cliente.setSenha(rs.getString("senha"));
-
 
         }catch (SQLException e) {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE,null,e);
+        }
+        return cliente;
+    }
+
+    public Cliente findById(int id) {
+        String sql = "SELECT * FROM cliente WHERE id = ?";
+        Cliente cliente = new Cliente();
+        try(PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            rs.next();
+            cliente.setId(rs.getInt("id"));
+            cliente.setNome(rs.getString("nome"));
+            cliente.setData_nascimento(rs.getDate("data_nascimento"));
+            cliente.setEmail(rs.getString("email"));
+            cliente.setTelefone(rs.getString("telefone"));
+            cliente.setCep(rs.getString("cep"));
+            cliente.setRua(rs.getString("rua"));
+            cliente.setNumero(rs.getString("numero"));
+            cliente.setComplemento(rs.getString("complemento"));
+            cliente.setBairro(rs.getString("bairro"));
+            cliente.setCpf(rs.getString("cpf"));
+            cliente.setSenha(rs.getString("senha"));
+        } catch (SQLException e){
+            logger.log(Level.SEVERE,null,e);
         }
         return cliente;
     }

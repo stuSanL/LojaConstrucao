@@ -11,6 +11,8 @@ public class Funcionario {
     private int numero_vendas;
     private Date data_nascimento;
     private String cpf;
+    private String email;
+    private String senha;
 
     public Funcionario(String nome, String cargo, float salario, int numero_vendas, Date data_nascimento, String cpf) {
         this.nome = nome;
@@ -79,6 +81,22 @@ public class Funcionario {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     @Override
