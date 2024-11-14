@@ -27,7 +27,7 @@ public class LoginController extends HttpServlet {
 
     public LoginController() {
         super();
-        clienteDAO = new ClienteDAO();
+        this.clienteDAO = new ClienteDAO();
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

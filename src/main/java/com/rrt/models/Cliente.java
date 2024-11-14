@@ -35,6 +35,7 @@ public class Cliente {
     public Cliente(int id, String nome, Date data_nascimento, String cpf, String email, String telefone,
                    String cep, String rua, String numero, String complemento,
                    String bairro, String senha) {
+        this.id = id;
         this.nome = nome;
         this.cpf = cpf;
         this.email = email;
@@ -127,5 +128,23 @@ public class Cliente {
 
     public void setData_nascimento(Date data_nascimento) {
         this.data_nascimento = data_nascimento;
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", cpf='" + cpf + '\'' +
+                ", email='" + email + '\'' +
+                ", telefone='" + telefone + '\'' +
+                ", cep='" + cep + '\'' +
+                ", rua='" + rua + '\'' +
+                ", numero='" + numero + '\'' +
+                ", complemento='" + complemento + '\'' +
+                ", bairro='" + bairro + '\'' +
+                ", data_nascimento=" + data_nascimento +
+                ", senha='" + senha + '\'' +
+                '}';
     }
 }

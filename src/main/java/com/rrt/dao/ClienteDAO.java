@@ -69,24 +69,26 @@ public class ClienteDAO {
 
     public Cliente findById(int id) {
         String sql = "SELECT * FROM cliente WHERE id = ?";
-        Cliente cliente = new Cliente();
+        Cliente cliente = null;
         try(PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
-            rs.next();
-            cliente = new Cliente(
-                    rs.getInt("id"),
-                    rs.getString("nome"),
-                    rs.getDate("data_nascimento"),
-                    rs.getString("email"),
-                    rs.getString("telefone"),
-                    rs.getString("cep"),
-                    rs.getString("rua"),
-                    rs.getString("numero"),
-                    rs.getString("complemento"),
-                    rs.getString("bairro"),
-                    rs.getString("cpf"),
-                    rs.getString("senha")
-            );
+            if(rs.next()) {
+                cliente = new Cliente(
+                        rs.getInt("id"),
+                        rs.getString("nome"),
+                        Date.valueOf(rs.getString("data_nascimento")),
+                        rs.getString("email"),
+                        rs.getString("telefone"),
+                        rs.getString("cep"),
+                        rs.getString("rua"),
+                        rs.getString("numero"),
+                        rs.getString("complemento"),
+                        rs.getString("bairro"),
+                        rs.getString("cpf"),
+                        rs.getString("senha")
+                );
+            }
         } catch (SQLException e){
             logger.log(Level.SEVERE,null,e);
         }
@@ -98,7 +100,6 @@ public class ClienteDAO {
         List<Cliente> clientes = new ArrayList<>();
         try(PreparedStatement stmt = connection.prepareStatement(sql)){
             ResultSet rs = stmt.executeQuery();
-
             while(rs.next()){
                 Cliente cliente = new Cliente();
                 cliente.setId(rs.getInt("id"));

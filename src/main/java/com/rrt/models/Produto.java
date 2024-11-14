@@ -1,16 +1,19 @@
 package com.rrt.models;
 
+import java.text.DecimalFormat;
+import java.util.Formatter;
+
 public class Produto {
     private int id;
     private String nome;
-    private float preco;
+    private double preco;
     private Categoria categoria;
     private Marca marca;
     private String especificacoes;
     private String disponibilidade;
 
 
-    public Produto(int id, String nome, float preco, Categoria categoria, Marca marca, String especificacoes, String disponibilidade) {
+    public Produto(int id, String nome, double preco, Categoria categoria, Marca marca, String especificacoes, String disponibilidade) {
         this.id = id;
         this.nome = nome;
         this.preco = preco;
@@ -39,8 +42,8 @@ public class Produto {
         this.nome = nome;
     }
 
-    public float getPreco() {
-        return preco;
+    public double getPreco() {
+        return this.preco;
     }
 
     public void setPreco(float preco) {

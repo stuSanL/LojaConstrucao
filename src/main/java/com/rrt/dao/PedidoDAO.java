@@ -80,7 +80,7 @@ public class PedidoDAO {
         }
     }
 
-    public List<Pedido> allPedidos() {
+    public List<Pedido> findAll() {
         String sql = "SELECT * FROM pedido";
         List<Pedido> pedidos = new ArrayList<Pedido>();
         Pedido pedido = null;
@@ -105,7 +105,7 @@ public class PedidoDAO {
         return pedidos;
     }
 
-    public List<Pedido> pedidoByCliente(int idCliente) {
+    public List<Pedido> findPedidosByCliente(int idCliente) {
         String sql = "SELECT * FROM pedido WHERE id_cliente = ?";
         List<Pedido> pedidos = new ArrayList<>();
         try(PreparedStatement stmt = connection.prepareStatement(sql)){
@@ -129,7 +129,7 @@ public class PedidoDAO {
         return pedidos;
     }
 
-    public List<Pedido> pedidoByStatus(String status) {
+    public List<Pedido> findPedidosByStatus(String status) {
         String sql = "SELECT * FROM pedido WHERE status = ?";
         List<Pedido> pedidos = new ArrayList<>();
         try(PreparedStatement stmt = connection.prepareStatement(sql)){
@@ -152,7 +152,7 @@ public class PedidoDAO {
         return pedidos;
     }
 
-    public List<Pedido> pedidoByData(Date data) {
+    public List<Pedido> findPedidosByData(Date data) {
         String sql = "SELECT * FROM pedido WHERE data_pedido = ?";
         List<Pedido> pedidos = new ArrayList<>();
         try(PreparedStatement stmt = connection.prepareStatement(sql)){

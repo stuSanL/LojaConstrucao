@@ -30,7 +30,7 @@ public class ProdutoDAO {
         String sql = "INSERT INTO produto (nome, preco, categoria_id, marca_id, especificacoes, disponibilidade) VALUES (?,?,?,?,?,?)";
         try(PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, produto.getNome());
-            stmt.setFloat(2, produto.getPreco());
+            stmt.setDouble(2, produto.getPreco());
             stmt.setInt(3, produto.getCategoria().getId());
             stmt.setInt(4, produto.getMarca().getId());
             stmt.setString(5, produto.getEspecificacoes());
@@ -55,7 +55,7 @@ public class ProdutoDAO {
         String sql = "UPDATE produto SET nome = ?, preco = ?, categoria_id = ?, marca_id = ?, especificacoes = ?, disponibilidade = ? WHERE id = ?";
         try(PreparedStatement stmt = connection.prepareStatement(sql)){
             stmt.setString(1, produto.getNome());
-            stmt.setFloat(2, produto.getPreco());
+            stmt.setDouble(2, produto.getPreco());
             stmt.setInt(3, produto.getCategoria().getId());
             stmt.setInt(4, produto.getMarca().getId());
             stmt.setString(5, produto.getEspecificacoes());
