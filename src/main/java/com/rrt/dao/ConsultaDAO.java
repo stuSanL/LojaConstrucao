@@ -17,6 +17,8 @@ public class ConsultaDAO {
     Connection connection;
     Logger logger;
     ClienteDAO clienteDAO = new ClienteDAO();
+    FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+
     public ConsultaDAO() {
         this.connection = ConnectionFactory.getConnection();
         this.logger = Logger.getLogger(ConsultaDAO.class.getName());
@@ -36,7 +38,7 @@ public class ConsultaDAO {
         }
     }
 
-    public void alterar(Consulta consulta) {
+    public void update(Consulta consulta) {
         String sql = "UPDATE consulta SET id_cliente = ?, id_funcionario = ?, data = ?, confirmacao = ?, horario = ? WHERE id = ? ";
         try(PreparedStatement stmt = connection.prepareStatement(sql)){
             stmt.setInt(1, consulta.getCliente().getId());
@@ -51,7 +53,7 @@ public class ConsultaDAO {
         }
     }
 
-    public void excluir(int id) {
+    public void delete(int id) {
         String sql = "DELETE FROM consulta WHERE id = ? ";
         try(PreparedStatement stmt = connection.prepareStatement(sql)){
             stmt.setInt(1, id);
@@ -92,8 +94,8 @@ public class ConsultaDAO {
             while (rs.next()) {
                 Consulta consulta = new Consulta();
                 consulta.setId(rs.getInt("id"));
-                //consulta.setCliente(clienteDAO.findById(rs.getInt("id_cliente")));
-                //consulta.setFuncionario(funcionarioDAO.findById(rs.getInt("id_funcionario")));
+                consulta.setCliente(clienteDAO.findById(rs.getInt("id_cliente")));
+                consulta.setFuncionario(funcionarioDAO.findById(rs.getInt("id_funcionario")));
                 consulta.setData(rs.getDate("data"));
                 consulta.setConfirmacao(rs.getString("confirmacao"));
                 consulta.setHorario(rs.getString("horario"));

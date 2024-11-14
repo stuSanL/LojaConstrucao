@@ -8,6 +8,12 @@ public class Marca {
     public Marca(String nome) {
         this.nome = nome;
     }
+
+    public Marca(int id, String nome) {
+        this.id = id;
+        this.nome = nome;
+    }
+
     public Marca() {}
 
     @Override

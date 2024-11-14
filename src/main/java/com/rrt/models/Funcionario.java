@@ -14,13 +14,16 @@ public class Funcionario {
     private String email;
     private String senha;
 
-    public Funcionario(String nome, String cargo, float salario, int numero_vendas, Date data_nascimento, String cpf) {
+    public Funcionario(int id, String nome, String cargo, float salario, int numero_vendas, Date data_nascimento, String cpf, String email, String senha) {
+        this.id = id;
         this.nome = nome;
         this.cargo = cargo;
         this.salario = salario;
         this.numero_vendas = numero_vendas;
         this.data_nascimento = data_nascimento;
         this.cpf = cpf;
+        this.email = email;
+        this.senha = senha;
     }
 
     public Funcionario(){

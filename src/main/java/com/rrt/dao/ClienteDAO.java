@@ -132,14 +132,35 @@ public class ClienteDAO {
         }
     }
 
-    public void alterar(Cliente cliente){
+    public void update(Cliente cliente){
         String sql = "UPDATE cliente SET nome = ?, data_nascimento = ?, email = ?," +
                 "telefone = ?, cep = ?, rua = ?, numero = ?, complemento = ?," +
-                "bairro = ?, cpf = ?, senha = ?";
+                "bairro = ?, cpf = ? WHERE id = ?";
         try(PreparedStatement stmt = connection.prepareStatement(sql)){
-
+            stmt.setString(1, cliente.getNome());
+            stmt.setDate(2, cliente.getData_nascimento());
+            stmt.setString(3, cliente.getEmail());
+            stmt.setString(4, cliente.getTelefone());
+            stmt.setString(5, cliente.getCep());
+            stmt.setString(6, cliente.getRua());
+            stmt.setString(7, cliente.getNumero());
+            stmt.setString(8, cliente.getComplemento());
+            stmt.setString(9, cliente.getBairro());
+            stmt.setString(10, cliente.getCpf());
+            stmt.setInt(11, cliente.getId());
+            stmt.executeUpdate();
         } catch (SQLException e){
             logger.log(Level.SEVERE, null, e);
+        }
+    }
+
+    public void updateSenha(Cliente cliente){
+        String sql = "UPDATE cliente SET senha = ? WHERE id = ?";
+        try(PreparedStatement stmt = connection.prepareStatement(sql)){
+            stmt.setString(1, cliente.getSenha());
+            stmt.setInt(2, cliente.getId());
+        }catch (SQLException e){
+            logger.log(Level.SEVERE,null,e);
         }
     }
 
