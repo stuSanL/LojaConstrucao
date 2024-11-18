@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 public class LoginController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    private ClienteDAO clienteDAO;
+    private final ClienteDAO clienteDAO;
     private static final String MANTER_CLIENTE = "manterCliente.jsp";
     private static final String LISTAR_CLIENTES = "listarClientes.jsp";
     private static final String CADASTRO_CLIENTE = "manterCliente.jsp";

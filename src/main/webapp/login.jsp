@@ -16,8 +16,8 @@
         <tr>
             <td>ID</td>
             <td><input type="hidden" name="acao" value="buscarPorId" /></td>
-            <td><input type="text" name="cpf" size="10" maxlength="10"/></td>
-            <td><input type="text" name="senha" size="10" maxlength="10"/></td>
+            <td>CPF<input type="text" name="cpf" size="11" maxlength="11"/></td>
+            <td>SENHA<input type="text" name="senha" size="10" maxlength="10"/></td>
 
 
             <td><input type="submit" value="Buscar" /></td>
