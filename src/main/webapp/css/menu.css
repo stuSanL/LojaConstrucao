@@ -1,9 +1,13 @@
 :root{
     --c1: #ffffff;
     --c2: #000000;
-    --c3: #0A3D62;
+    --c3: #0d4d7a;
     --c4: #808080;
     --c5: #F4B400;
+    --c6: #FF6F00;
+    --c7: #D1D1D1;
+    --c8: #0A3D62;
+    --teste: rgb(0, 255, 0);
 }
 
 body{
@@ -43,22 +47,41 @@ nav{
     font-family: Arial, Helvetica, sans-serif;
     color: var(--c1);
     text-shadow: 1px 1px 1px black;
+    transition: all 1s;
+}
+.b-login{
+    position: relative;
+    animation: inicio-login 2s;
 }
 
 .nome{
     color: var(--c1);
     text-decoration: none;
     z-index: 10;
+    animation: opc 3s;
+}
+
+.nome:hover{
+    cursor: pointer;
+    border-bottom: solid 2px var(--c5);
+}
+
+.drop, .nome{
+    font-weight: bold;
+    transition: ;
 }
 
 .nome-login{
     padding: 5px;
     border-radius: 5px;
+    z-index: 10;
+    text-decoration: none;
+    color: var(--c1);
     border: solid 2px var(--c1);
 }
-
-.nome:hover{
-    cursor: pointer;
+.nome-login:hover{
+    background-color: var(--c5);
+    color: var(--c1);
 }
 
 .area-pesquisa{
@@ -69,8 +92,13 @@ nav{
     align-items: center;
     margin: auto 0;
     background-color: var(--c1);
-    border: solid 2px var(--c1);
+    border: solid 2px var(--c5);
+    box-shadow: 1px 1px 2px 1px black,
+                inset 1px 1px 2px 1px black;
     border-radius: 50px;
+    position: relative;
+    animation:  inicio-barra 2s,
+                opc 2s;
 }
 
 .barra-pesquisas{
@@ -81,6 +109,7 @@ nav{
     background-color: transparent;
     border-radius: 50px 0 0 50px;
     padding: 0 10px;
+    padding-top: 5px;
 }
 
 .fa-magnifying-glass{
@@ -88,8 +117,8 @@ nav{
     font-size: 20px;
     padding: 10px;
     border-radius: 0 20px 20px 0;
-    color: var(--c3);
-    text-shadow: 1px 1px 1px black;
+    color: var(--c5);
+    text-shadow: 1px 1px 2px black;
 }
 
 
@@ -97,11 +126,19 @@ nav{
     color: var(--c1);
     font-family: Arial, Helvetica, sans-serif;
     text-shadow: 2px 2px 2px black;
-    transition: all .5s;
-    color: var(--c1);
+    color: var(--c5);
     text-decoration: none;
     font-size: 30px;
+    transition: all .5s;
+    animation:  inicio-menu 2s,
+                opc 2s;
+    position: relative;
 }
+
+.logo-menu:hover{
+    transform: scale(1.05) rotate(-3deg);
+}
+
 .logo-menu2{
     display: none;
 }
@@ -118,6 +155,7 @@ nav{
     animation: anim .5s;
     overflow: hidden;
     margin-top: 200px;
+    z-index: 5;
 }
 
 .drop{
@@ -138,14 +176,54 @@ nav{
     .drop-bar{
         display: flex;
     }
+    .menu{
+        color: var(--c5);
+    }
+}
+
+.botao-menu:has(.drop-bar:hover) .nome{
+    border-bottom: solid 2px var(--c5);
 }
 
 .drop:hover{
     background-color: rgba(255, 255, 255, 0.20);
+    color: var(--c5);
 }
 
 .botao-menu-mobile{
     display: none;
+}
+
+@keyframes inicio-menu {
+    from{
+        right: 200px;
+    }to{
+        right: 0px;
+    }
+}
+
+@keyframes inicio-barra {
+    from{
+        bottom: 100px;
+    }to{
+        bottom: 0;
+    }
+}
+
+@keyframes inicio-login {
+    from{
+        left: 400px;
+    }to{
+        left: 0px;
+    }
+}
+
+@keyframes opc {
+    from{
+        opacity: 0;
+    }to{
+        opacity: 100%;
+    }
 }
 
 @keyframes anim{
@@ -240,7 +318,7 @@ nav{
         height: auto;
     }
 
-    .nome{
+    .nome, .nome-login{
         font-size: 20px;
         padding: 10px;
         width: 80%;
