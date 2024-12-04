@@ -93,6 +93,7 @@ public class EstoqueDAO {
                         rs.getInt("quantidade"),
                         Date.valueOf(rs.getString("data_entrada")),
                         Date.valueOf(rs.getString("data_saida"))
+                        )
                 );
             }
         } catch (SQLException e) {

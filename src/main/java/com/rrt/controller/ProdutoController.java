@@ -9,14 +9,16 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.io.Serial;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
 public class ProdutoController extends HttpServlet {
+    @Serial
     private static final long serialVersionUID = 1L;
 
-    private ProdutoDAO produtoDAO;
+    private final ProdutoDAO produtoDAO;
     private static final String MANTER_PRODUTO = "manterProduto.jsp";
     private static final String LISTAR_PRODUTO = "listarProdutos.jsp";
     private static final String INDEX = "LojaConstrucao/index.html";

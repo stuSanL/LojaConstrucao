@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.io.Serial;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -16,6 +17,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 public class LoginController extends HttpServlet {
+    @Serial
     private static final long serialVersionUID = 1L;
 
     private final ClienteDAO clienteDAO;
@@ -45,13 +47,15 @@ public class LoginController extends HttpServlet {
             Cliente cliente = clienteDAO.findbyCPF(cpf);
             String senha = request.getParameter("senha");
             if(senha.equals(cliente.getSenha())){
+                //sucesso no login
                 avancar = SUCESSO;
 
             }else{
+                //errado
                 avancar = LOGIN_CLIENTES;
             }
 
-        }else {
+        } else {
             logger.info("Iniciando else");
             List<Cliente> listaClientes = clienteDAO.findAll();
             request.setAttribute("listaClientes", listaClientes);

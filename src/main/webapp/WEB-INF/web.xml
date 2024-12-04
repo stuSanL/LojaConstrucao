@@ -41,6 +41,10 @@
     <servlet-name>FuncionarioController</servlet-name>
     <servlet-class>com.rrt.controller.FuncionarioController</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>FornecedorController</servlet-name>
+    <servlet-class>com.rrt.controller.FornecedorController</servlet-class>
+  </servlet>
 
   <servlet-mapping>
     <servlet-name>ClienteController</servlet-name>
@@ -57,5 +61,9 @@
   <servlet-mapping>
     <servlet-name>FuncionarioController</servlet-name>
     <url-pattern>funcionarios</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>FornecedorController</servlet-name>
+    <url-pattern>fornecedor</url-pattern>
   </servlet-mapping>
 </web-app>
