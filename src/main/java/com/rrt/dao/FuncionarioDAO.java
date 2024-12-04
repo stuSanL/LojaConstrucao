@@ -4,6 +4,8 @@ import com.rrt.Connection.ConnectionFactory;
 import com.rrt.models.Funcionario;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -40,17 +42,17 @@ public class FuncionarioDAO {
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             if(rs.next()) {
-                funcionario = new Funcionario();
-                funcionario.setId(rs.getInt("id"));
-                funcionario.setNome(rs.getString("nome"));
-                funcionario.setCargo(rs.getString("cargo"));
-                funcionario.setSalario(rs.getInt("salario"));
-                funcionario.setNumero_vendas(rs.getInt("numero_vendas"));
-                funcionario.setData_nascimento(rs.getDate("data_nascimento"));
-                funcionario.setCpf(rs.getString("cpf"));
-                funcionario.setEmail(rs.getString("email"));
-                funcionario.setSenha(rs.getString("senha"));
-                funcionario.setId(rs.getInt("id"));
+                funcionario = new Funcionario(
+                        rs.getInt("id"),
+                        rs.getString("nome"),
+                        rs.getString("cargo"),
+                        rs.getFloat("salario"),
+                        rs.getInt("numero_vendas"),
+                        Date.valueOf(rs.getString("data_nascimento")),
+                        rs.getString("cpf"),
+                        rs.getString("email"),
+                        rs.getString("senha")
+                );
             }
         } catch (SQLException e){
             logger.log(Level.SEVERE, null, e);
@@ -80,6 +82,32 @@ public class FuncionarioDAO {
             logger.log(Level.SEVERE, null, e);
         }
         return funcionario;
+    }
+
+    public List<Funcionario> findAll(){
+        String sql = "SELECT * FROM funcionario";
+        List<Funcionario> funcionarios = null;
+        try(PreparedStatement stmt = connection.prepareStatement(sql)){
+            ResultSet rs = stmt.executeQuery();
+            funcionarios = new ArrayList<Funcionario>();
+            while (rs.next()){
+                Funcionario funcionario = new Funcionario(
+                        rs.getInt("id"),
+                        rs.getString("nome"),
+                        rs.getString("cargo"),
+                        rs.getFloat("salario"),
+                        rs.getInt("numero_vendas"),
+                        Date.valueOf(rs.getString("data_nascimento")),
+                        rs.getString("cpf"),
+                        rs.getString("email"),
+                        rs.getString("senha")
+                );
+                funcionarios.add(funcionario);
+            }
+        }catch (SQLException e){
+            logger.log(Level.SEVERE, null, e);
+        }
+        return funcionarios;
     }
 
     public void deleteById(int id) {

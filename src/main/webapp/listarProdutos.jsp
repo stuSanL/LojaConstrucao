@@ -19,6 +19,14 @@
     ID <input type="number" name="id"/>
     <input type="submit" value="Buscar"/>
 </form>
+<form method="get" action="produto" name="buscarPorNome">
+    <input type="hidden" name="acao" value="buscarPorNome">
+    <label>Nome <input type="text" name="nome"> </label>
+    <input type="submit" value="Buscar">
+</form>
+<form method="get">
+
+</form>
 <br>
 <h1>Manter Produtos</h1>
 <form method="get" action="produto" name="listarProdutos">

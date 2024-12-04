@@ -50,7 +50,7 @@ public class ClienteDAO {
             cliente = new Cliente(
                     rs.getInt("id"),
                     rs.getString("nome"),
-                    rs.getDate("data_nascimento"),
+                    Date.valueOf(rs.getString("data_nascimento")),
                     rs.getString("email"),
                     rs.getString("telefone"),
                     rs.getString("cep"),

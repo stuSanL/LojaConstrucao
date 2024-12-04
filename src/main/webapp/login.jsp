@@ -11,11 +11,11 @@
 <h1>LISTA DE PESSOAS</h1>
 <br>
 <br>
-<form name="buscarCPF" action="LoginController" method="GET">
+<form name="buscarCPF" action="login" method="GET">
     <table>
         <tr>
             <td>ID</td>
-            <td><input type="hidden" name="acao" value="buscarPorId" /></td>
+            <td><input type="hidden" name="acao" value="buscarPorCPF" /></td>
             <td>CPF<input type="text" name="cpf" size="11" maxlength="11"/></td>
             <td>SENHA<input type="text" name="senha" size="10" maxlength="10"/></td>
 
@@ -25,7 +25,7 @@
     </table>
 </form>
 <p>
-    <a href="../LojaConstrucao/index.html">VOLTAR MENU</a>
+    <a href="index.html">VOLTAR MENU</a>
 </p>
 
 </body>

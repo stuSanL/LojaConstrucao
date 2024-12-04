@@ -14,7 +14,7 @@ pageEncoding="UTF-8"%>
     <title>Listar Clientes</title>
 </head>
 <body>
-<h1>Listar Telefones</h1>
+<h1>Listar Clientes</h1>
 <br>
     <h1>Manter Clientes</h1>
     <form name="listarClientes" action="cliente" method="GET">

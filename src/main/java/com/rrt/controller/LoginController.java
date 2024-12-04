@@ -23,6 +23,7 @@ public class LoginController extends HttpServlet {
     private static final String LISTAR_CLIENTES = "listarClientes.jsp";
     private static final String CADASTRO_CLIENTE = "manterCliente.jsp";
     private static final String LOGIN_CLIENTES = "login.jsp";
+    private static final String SUCESSO = "sucesso.jsp";
     private static final Logger logger = Logger.getLogger(LoginController.class.getName());
 
     public LoginController() {
@@ -44,10 +45,10 @@ public class LoginController extends HttpServlet {
             Cliente cliente = clienteDAO.findbyCPF(cpf);
             String senha = request.getParameter("senha");
             if(senha.equals(cliente.getSenha())){
-                avancar = "";
+                avancar = SUCESSO;
 
             }else{
-                avancar = "Senha incorreta";
+                avancar = LOGIN_CLIENTES;
             }
 
         }else {
