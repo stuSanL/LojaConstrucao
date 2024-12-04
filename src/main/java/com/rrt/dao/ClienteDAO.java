@@ -133,7 +133,7 @@ public class ClienteDAO {
         }
     }
 
-    public void update(Cliente cliente){
+    public void updateById(Cliente cliente){
         String sql = "UPDATE cliente SET nome = ?, data_nascimento = ?, email = ?," +
                 "telefone = ?, cep = ?, rua = ?, numero = ?, complemento = ?," +
                 "bairro = ?, cpf = ? WHERE id = ?";

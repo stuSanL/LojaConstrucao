@@ -29,7 +29,7 @@ public class AvaliacoesDAO {
     }
 
     public void add(Avaliacoes avaliacoes) {
-        String sql = "INSERT INTO avaliacoes (id_produto, id_cliente, classificacao, cometario, data) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO avaliacoes (id_produto, id_cliente, classificacao, comentario, data) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, avaliacoes.getProduto().getId());
             stmt.setInt(2, avaliacoes.getCliente().getId());
@@ -53,7 +53,7 @@ public class AvaliacoesDAO {
     }
 
     public void update(Avaliacoes avaliacoes) {
-        String sql = "UPDATE avaliacoes SET id_produto = ?, id_cliente = ?, classificacao = ?, cometario = ?, data = ? WHERE id = ?";
+        String sql = "UPDATE avaliacoes SET id_produto = ?, id_cliente = ?, classificacao = ?, comentario = ?, data = ? WHERE id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, avaliacoes.getProduto().getId());
             stmt.setInt(2, avaliacoes.getCliente().getId());
@@ -106,6 +106,7 @@ public class AvaliacoesDAO {
                         rs.getInt("classificacao"),
                         rs.getString("comentario"),
                         Date.valueOf(rs.getString("data"))
+                        )
                 );
             }
         } catch (SQLException e) {

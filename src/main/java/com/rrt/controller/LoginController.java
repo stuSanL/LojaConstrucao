@@ -10,6 +10,8 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.sql.SQLException;
+import java.text.DateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -65,54 +67,77 @@ public class LoginController extends HttpServlet {
         logger.info("avançando para " + avancar);
     }
 
-//    @lombok.SneakyThrows
-//    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-//
-//            throws ServletException, IOException {
-//
-//        String id_pessoa = request.getParameter("id_pessoa");
-//        String nome = request.getParameter("nome");
-//        String dataNascimento = request.getParameter("dataNascimento");
-//        String email = request.getParameter("email");
-//        String telefone = request.getParameter("telefone");
-//
-//        if (id_pessoa.isEmpty()) {
-//
-//            Cliente pessoa = new Cliente();
-//            pessoa.setNome(nome);
-//            pessoa.setEmail(email);
-//            pessoa.setTelefone(telefone);
-//            DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-//            LocalDate locaDate = LocalDate.parse(dataNascimento, formato);
-//            pessoa.setData_nascimento(Date.valueOf(locaDate));
-//
-//            clienteDAO.add(pessoa);
-//
-//            request.setAttribute("listaPessoas", clienteDAO.findAll());
-//
-//            RequestDispatcher pagina = request.getRequestDispatcher(LISTAR_CLIENTES);
-//
-//            pagina.forward(request, response);
-//
-//        } else {
-//
-//            Cliente pessoa = new Cliente();
-//
-//            pessoa.setId(Integer.parseInt(id_pessoa));
-//            pessoa.setNome(nome);
-//            pessoa.setEmail(email);
-//            pessoa.setTelefone(telefone);
-//
-//            DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-//            LocalDate locaDate = LocalDate.parse(dataNascimento, formato);
-//            pessoa.setData_nascimento(Date.valueOf(locaDate));
-//
-//            clienteDAO.updateNameById(pessoa);
-//            request.setAttribute("listaPessoas", clienteDAO.findAll());
-//            RequestDispatcher pagina = request.getRequestDispatcher(LISTAR_PESSOAS);
-//            pagina.forward(request, response);
-//
-//        }
-//
-//    }
-}
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+
+            throws ServletException, IOException {
+
+        String id = request.getParameter("id");
+        String nome = request.getParameter("nome");
+        String email = request.getParameter("email");
+        String cpf = request.getParameter("cpf");
+        String senha = request.getParameter("senha");
+        String telefone = request.getParameter("telefone");
+        String cep = request.getParameter("cep");
+        String bairro = request.getParameter("bairro");
+        String cidade = request.getParameter("cidade");
+        String data_nascimento = request.getParameter("data_nascimento");
+        String rua = request.getParameter("rua");
+        String numero = request.getParameter("numero");
+        String complemento = request.getParameter("complemento");
+
+
+
+        if (id.isEmpty()) {
+
+            Cliente cliente = new Cliente();
+            cliente.setNome(nome);
+            cliente.setCpf(cpf);
+            cliente.setSenha(senha);
+            cliente.setTelefone(telefone);
+            cliente.setCep(cep);
+            cliente.setBairro(bairro);
+            cliente.setComplemento(complemento);
+            cliente.setEmail(email);
+            cliente.setNumero(numero);
+            cliente.setRua(rua);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            LocalDate localDate = LocalDate.parse(data_nascimento, formatter);
+            cliente.setData_nascimento(Date.valueOf(localDate));
+
+            try {
+                clienteDAO.add(cliente);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+
+            request.setAttribute("listaClientes", clienteDAO.findAll());
+
+            RequestDispatcher pagina = request.getRequestDispatcher(LISTAR_CLIENTES);
+
+            pagina.forward(request, response);
+
+        } else {
+
+            Cliente cliente = new Cliente();
+
+            cliente.setId(Integer.parseInt(id));
+            cliente.setNome(nome);
+            cliente.setEmail(email);
+            cliente.setTelefone(telefone);
+
+            DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            LocalDate locaDate = LocalDate.parse(data_nascimento, formato);
+            cliente.setData_nascimento(Date.valueOf(locaDate));
+
+            clienteDAO.updateById(cliente);
+            request.setAttribute("listaCliente", clienteDAO.findAll());
+            RequestDispatcher pagina = request.getRequestDispatcher(LISTAR_CLIENTES);
+            pagina.forward(request, response);
+
+        }
+
+    }
+    }
+
+
