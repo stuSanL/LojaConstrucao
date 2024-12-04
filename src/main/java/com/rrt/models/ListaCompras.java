@@ -9,7 +9,7 @@ public class ListaCompras {
     private Date data_criacao;
     private String compartilhada_com;
 
-    public ListaCompras(Cliente cliente, Date data_criacao, String compartilhada_com) {
+    public ListaCompras(int id, Cliente cliente, Date data_criacao, String compartilhada_com) {
         this.cliente = cliente;
         this.data_criacao = data_criacao;
         this.compartilhada_com = compartilhada_com;
