@@ -23,7 +23,7 @@ public class LoginController extends HttpServlet {
     private final ClienteDAO clienteDAO;
     private static final String MANTER_CLIENTE = "manterCliente.jsp";
     private static final String LISTAR_CLIENTES = "listarClientes.jsp";
-    private static final String CADASTRO_CLIENTE = "manterCliente.jsp";
+    private static final String CADASTRO_CLIENTE = "cadastroCliente.jsp";
     private static final String LOGIN_CLIENTES = "login.jsp";
     private static final String SUCESSO = "sucesso.jsp";
     private static final Logger logger = Logger.getLogger(LoginController.class.getName());

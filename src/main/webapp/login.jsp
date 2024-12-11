@@ -24,6 +24,11 @@
         </tr>
     </table>
 </form>
+<tfoot>
+<tr>
+    <td colspan='5'><a href="login?acao=criar">Cadastre_se</a></td>
+</tr>
+</tfoot>
 <p>
     <a href="index.html">VOLTAR MENU</a>
 </p>

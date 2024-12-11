@@ -1,4 +1,5 @@
-
+<%@ page import="java.text.DateFormat" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
@@ -10,40 +11,43 @@
 </head>
 <body>
 <h1>Cadastro do Cliente</h1>
-<form name="manterPessoa" action="PessoaController" method="POST">
+<form name="cadastroCliente" action="login" method="POST">
+    <%%>
     <table>
         <tr>
             <td>ID</td>
             <td>
-                <input type="text" readonly="readonly" name="id_pessoa"
-                       size="10" maxlength="10" value="<c:out value='${pessoa.id}' />" />
+                <input type="text" readonly="readonly" name="id"
+                       size="10" maxlength="10" />
             </td>
         </tr>
         <tr>
             <td>Nome</td>
             <td>
-                <input type="text" name="nome" size="50" maxlength="250"
-                       value="<c:out value='${pessoa.nome}' />" />
+                <input type="text" name="nome" size="50" maxlength="250"/>
             </td>
         </tr>
-        <tr>
+        <!--tr>
             <td>Data Nascimento</td>
             <td>
-                <input type="text" name="dataNascimento" size="50"
-                       maxlength="250" value="<fmt:formatDate value="${pessoa.dataNascimento}" pattern="dd/MM/yyyy" />" />
+                <input type="text" name="data_nascimento" size="50"
+                       maxlength="250" value="<%
+                      /*  DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                        df.format(cliente);
+                       */%>"  />
 
             </td>
-        </tr>
+        </tr-->
         <tr>
             <td>Email</td>
             <td>
-                <input type="text" name="email" size="50" maxlength="250" value="<c:out value='${pessoa.email}' />" />
+                <input type="text" name="email" size="50" maxlength="250" value="<c:out value='${cliente.email}' />" />
             </td>
         </tr>
         <tr>
             <td>Telefone</td>
             <td>
-                <input type="text" name="telefone" size="50" maxlength="250" value="<c:out value='${pessoa.telefone}' />" />
+                <input type="text" name="telefone" size="50" maxlength="250" value="<c:out value='${cliente.telefone}' />" />
             </td>
         </tr>
         <tr>
