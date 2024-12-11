@@ -16,6 +16,7 @@ public class Fornecedor {
     private Date data_cadastro;
 
     public Fornecedor(int id, String nome, String cnpj, String telefone, String email, String cep, String rua, String numero, String complemento, String bairro, Date data_cadastro) {
+        this.id = id;
         this.nome = nome;
         this.cnpj = cnpj;
         this.telefone = telefone;

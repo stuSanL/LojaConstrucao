@@ -34,11 +34,18 @@ public class ProdutoController extends HttpServlet {
         String avancar = "";
 
         if(acao.equals("buscarPorId")){
-            int id = Integer.parseInt(request.getParameter("id"));
-            List<Produto> listaProdutos = new ArrayList<>();
-            listaProdutos.add(produtoDAO.findById(id));
-            request.setAttribute("listaProdutos", listaProdutos);
-            avancar = "listarProdutos.jsp";
+            String idS = request.getParameter("id");
+            if(idS != null && !idS.isEmpty()){
+                int id = Integer.parseInt(idS);
+                List<Produto> listaProdutos = new ArrayList<>();
+                listaProdutos.add(produtoDAO.findById(id));
+                request.setAttribute("listaProdutos", listaProdutos);
+                avancar = "listarProdutos.jsp";
+            } else {
+                logger.info(request.getRequestURI());
+                request.setAttribute("listaProdutos", produtoDAO.findAll());
+                avancar = "listarProdutos.jsp";
+            }
         } else if(acao.equalsIgnoreCase("listarProdutos")){
             request.setAttribute("listaProdutos", produtoDAO.findAll());
             avancar = LISTAR_PRODUTO;

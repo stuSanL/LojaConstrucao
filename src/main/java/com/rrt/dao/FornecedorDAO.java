@@ -113,7 +113,7 @@ public class FornecedorDAO {
                         rs.getString("numero"),
                         rs.getString("complemento"),
                         rs.getString("bairro"),
-                        rs.getDate("data_cadastro")
+                        Date.valueOf(rs.getString("data_cadastro"))
                 ));
             }
         } catch (SQLException e) {

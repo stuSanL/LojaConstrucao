@@ -24,8 +24,8 @@
             <td>CNPJ</td>
             <td>Telefone</td>
             <td>Email</td>
-            <td>CEP</td>
             <td>Endereço</td>
+            <td>CEP</td>
             <td>Data de Cadastro</td>
             <td colspan="8">Ação</td>
         </tr>
@@ -41,6 +41,9 @@
             <td><%=fornecedor.getCnpj()%></td>
             <td><%=fornecedor.getTelefone()%></td>
             <td><%=fornecedor.getEmail()%></td>
+            <td><%=fornecedor.getRua() + " nº" + fornecedor.getNumero() + " " + fornecedor.getComplemento() + " Bairro " + fornecedor.getBairro()%></td>
+            <td><%=fornecedor.getCep()%></td>
+            <td><%=fornecedor.getData_cadastro()%></td>
         </tr>
         <%
             }
@@ -49,4 +52,5 @@
     </table>
 </form>
 </body>
+<a href="index.html">Voltar ao Menu</a>
 </html>

@@ -22,10 +22,10 @@ public class FornecedorController extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private final Logger logger = Logger.getLogger(FornecedorController.class.getName());
     private static final String LISTAR_FORNECEDORES = "listarFornecedores.jsp";
-    private FornecedorDAO fornecedorDAO;
+    private final FornecedorDAO fornecedorDAO;
 
     public FornecedorController() {
-        FornecedorDAO fornecedorDAO = new FornecedorDAO();
+        this.fornecedorDAO = new FornecedorDAO();
     }
 
     @Override
@@ -48,5 +48,6 @@ public class FornecedorController extends HttpServlet {
         }
 
         RequestDispatcher pagina = request.getRequestDispatcher(avancar);
+        pagina.forward(request, response);
     }
 }
