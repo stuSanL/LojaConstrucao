@@ -57,7 +57,12 @@
             <td><%=produto.getMarca().getNome()%></td>
             <td><%=produto.getEspecificacoes()%></td>
             <td><%=produto.getDisponibilidade()%></td>
-            <td>Atualizar Deletar</td>
+            <td>
+                <a href="produto?acao=atualizar&id=<%=produto.getId()%>&nome=<%=produto.getNome()%>&preco=<%=produto.getPreco()%>&categoria_id=<%=
+                produto.getCategoria().getId()%>&marca_id=<%=produto.getMarca().getId()%>&especificacoes=<%=produto.getEspecificacoes()%>&disponibilidade=<%=
+                produto.getEspecificacoes()%>">Atualizar</a>
+                Deletar
+            </td>
         </tr>
         <%}%>
         </tbody>
