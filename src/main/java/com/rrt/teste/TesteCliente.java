@@ -23,6 +23,7 @@ public class TesteCliente {
         cliente.setCpf("cpf0");
         cliente.setSenha("senha0");
         ClienteDAO clienteDAO = new ClienteDAO();
+<<<<<<< Updated upstream
         //clienteDAO.add(cliente);
         System.out.println("Clientes: ");
         for(Cliente c : clienteDAO.findAll()){
@@ -50,5 +51,9 @@ public class TesteCliente {
             }
         });
 
+=======
+        clienteDAO.add(cliente);
+        System.out.println("Funcional");
+>>>>>>> Stashed changes
     }
 }
