@@ -11,6 +11,10 @@
     --teste: rgb(0, 255, 0);
 }
 
+body{
+    background-color: var(--c4);
+}
+
 .body{
     margin: 0;
     padding: 0;
@@ -25,9 +29,9 @@ a{
     padding: 5px 10px;
     border-radius: 10px;
     display: flex;
-    color: var(--c3);
+    color: var(--c1);
     font-weight: bold;
-    border: solid 2px var(--c3);
+    border: solid 2px var(--c1);
     transition: .5s;
 }
 
