@@ -31,19 +31,7 @@
         <!tr>
             <td>Data Nascimento</td>
             <td>
-                <!%
-                    // Suponha que você tenha a data no formato dd/MM/yyyy
-                    String dataOriginal = "2024-12-25"; // Substitua por sua lógica para obter a data
 
-                    // Formatar para o padrão yyyy/MM/dd
-                    String dataFormatada = "";
-
-                        SimpleDateFormat formatoEntrada = new SimpleDateFormat("dd/MM/yyyy");
-                        SimpleDateFormat formatoSaida = new SimpleDateFormat("yyyy/MM/dd");
-                        Date data = Date.valueOf(dataOriginal);
-                        dataFormatada = formatoEntrada.format(data);
-
-                %>
 
                 <input type="date" name="data_nascimento" />
 

@@ -51,9 +51,6 @@ public class TesteCliente {
             }
         });
 
-=======
-        clienteDAO.add(cliente);
-        System.out.println("Funcional");
->>>>>>> Stashed changes
+;
     }
 }
