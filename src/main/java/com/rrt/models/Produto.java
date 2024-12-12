@@ -26,6 +26,15 @@ public class Produto {
 
     }
 
+    public Produto(String nome, double preco, Categoria categoria, Marca marca, String especificacoes, String disponibilidade) {
+        this.nome = nome;
+        this.preco = preco;
+        this.categoria = categoria;
+        this.marca = marca;
+        this.especificacoes = especificacoes;
+        this.disponibilidade = disponibilidade;
+    }
+
     public int getId() {
         return id;
     }

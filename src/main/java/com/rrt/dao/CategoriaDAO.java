@@ -32,7 +32,7 @@ public class CategoriaDAO {
         }
     }
 
-    public void updateNome(String nome, int id) throws SQLException {
+    public void updateNome(String nome, int id){
         String sql ="UPDATE categoria SET nome = ? WHERE id = ?";
         try(PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, nome);
@@ -43,7 +43,7 @@ public class CategoriaDAO {
         }
     }
 
-    public void delete(int id) throws SQLException {
+    public void delete(int id) {
         String sql = "DELETE FROM categoria WHERE id = ?";
         try(PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, id);
@@ -53,7 +53,7 @@ public class CategoriaDAO {
         }
     }
 
-    public Categoria findById(int id) throws SQLException {
+    public Categoria findById(int id) {
         String sql = "SELECT * FROM categoria WHERE id = ?";
         Categoria categoria = null;
         try(PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -70,7 +70,7 @@ public class CategoriaDAO {
         return categoria;
     }
 
-    public List<Categoria> findAll() throws SQLException {
+    public List<Categoria> findAll() {
         String sql = "SELECT * FROM categoria";
         List<Categoria> categorias = new ArrayList<>();
         try(PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -81,11 +81,13 @@ public class CategoriaDAO {
                         rs.getString("nome")
                 ));
             }
+        } catch (SQLException e){
+            logger.log(Level.SEVERE, null, e);
         }
         return categorias;
     }
 
-    public List<Categoria> findByNome(String nome) throws SQLException {
+    public List<Categoria> findByNome(String nome){
         String sql = "SELECT * FROM categoria WHERE nome like ?";
         List<Categoria> categorias = new ArrayList<>();
         try(PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -97,6 +99,8 @@ public class CategoriaDAO {
                         rs.getString("nome")
                 ));
             }
+        } catch (SQLException e){
+            logger.log(Level.SEVERE, null, e);
         }
         return categorias;
     }
