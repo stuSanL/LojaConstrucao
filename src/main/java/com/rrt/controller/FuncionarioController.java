@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FuncionarioController extends HttpServlet {
+    @Serial
     private static final long serialVersionUID = 1L;
     private static final String CADASTRAR = "manterFuncionario.jsp";
     private static final String LISTAR = "listarFuncionarios.jsp";
