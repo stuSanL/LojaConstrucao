@@ -3,8 +3,6 @@ package com.rrt.controller;
 import com.rrt.dao.CategoriaDAO;
 import com.rrt.dao.MarcaDAO;
 import com.rrt.dao.ProdutoDAO;
-import com.rrt.models.Categoria;
-import com.rrt.models.Marca;
 import com.rrt.models.Produto;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -79,12 +77,8 @@ public class ProdutoController extends HttpServlet {
                     especificacoes,
                     disponibilidade
             );
-            List<Categoria> categorias = categoriaDAO.findAll();
-            List<Marca> marcas = marcaDAO.findAll();
             request.setAttribute("produto", produto);
             request.setAttribute("listaProdutos", produtoDAO.findAll());
-            request.setAttribute("categorias", categorias);
-            request.setAttribute("marcas", marcas);
             avancar = MANTER_PRODUTO;
         } else {
             logger.info("Caiu no else");
